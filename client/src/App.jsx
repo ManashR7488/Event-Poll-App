@@ -21,7 +21,7 @@ const App = () => {
         <Route path="/dashboard" element={user ? <Dashboard /> : <Navigate to="/" />} />
         <Route path="/create" element={user ? <CreatePoll /> : <Navigate to="/" />} />
         <Route path="/poll/:pollId" element={user ? <PollDetails /> : <Navigate to="/" />} />
-        <Route path="/*" element={<div>Nothing Here</div>} />
+        <Route path="/*" element={<div className="text-white ">Nothing Here</div>} />
       </Routes>
     </Router>
   );

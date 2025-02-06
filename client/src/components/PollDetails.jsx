@@ -15,9 +15,10 @@ const PollDetails = () => {
     fetchPoll();
   }, [pollId]);
 
-  const handleFinalize = async (date) => {
-    await finalizeDate(pollId, date);
-    setPoll({ ...poll, finalizedDate: date });
+  const handleFinalize = async () => {
+   const res = await finalizeDate(pollId);
+    console.log(res);
+    setPoll({ ...poll, finalizedDate: res.finalizedDate });
   };
 
   if (!poll) return <h2>Loading...</h2>;
@@ -29,11 +30,10 @@ const PollDetails = () => {
         <h3>Finalized Date: {poll.finalizedDate}</h3>
       ) : (
         <>
-          {poll.dates.map((dateOption) => (
-            <button key={dateOption.date} onClick={() => handleFinalize(dateOption.date)}>
-              Finalize {dateOption.date} ({dateOption.votes} votes)
+            <button onClick={() => handleFinalize()} className="bg-blue-500 hover:bg-blue-600 cursor-pointer px-3 py-1 m-2 rounded-md text-white">
+              view
             </button>
-          ))}
+          
         </>
       )}
     </div>
